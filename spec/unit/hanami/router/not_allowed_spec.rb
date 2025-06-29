@@ -24,7 +24,7 @@ RSpec.describe Hanami::Router do
         status, headers, body = subject.call(env)
 
         expect(status).to  eq(405)
-        expect(headers).to eq("Content-Length" => "18", "Allow" => "GET, HEAD")
+        expect(headers).to eq("content-length" => "18", "allow" => "GET, HEAD")
         expect(body).to    eq(["Method Not Allowed"])
       end
 
@@ -34,7 +34,7 @@ RSpec.describe Hanami::Router do
           status, headers, body = subject.call(env)
 
           expect(status).to  eq(405)
-          expect(headers).to eq("Content-Length" => "18", "Allow" => "POST")
+          expect(headers).to eq("content-length" => "18", "allow" => "POST")
           expect(body).to    eq(["Method Not Allowed"])
         end
       end
@@ -45,7 +45,7 @@ RSpec.describe Hanami::Router do
           status, headers, body = subject.call(env)
 
           expect(status).to  eq(405)
-          expect(headers).to eq("Content-Length" => "18", "Allow" => "PUT, PATCH")
+          expect(headers).to eq("content-length" => "18", "allow" => "PUT, PATCH")
           expect(body).to    eq(["Method Not Allowed"])
         end
       end
@@ -57,7 +57,7 @@ RSpec.describe Hanami::Router do
         status, headers, body = subject.call(env)
 
         expect(status).to  eq(405)
-        expect(headers).to eq("Content-Length" => "18", "Allow" => "GET, HEAD")
+        expect(headers).to eq("content-length" => "18", "allow" => "GET, HEAD")
         expect(body).to    eq(["Method Not Allowed"])
       end
 
@@ -67,7 +67,7 @@ RSpec.describe Hanami::Router do
           status, headers, body = subject.call(env)
 
           expect(status).to  eq(405)
-          expect(headers).to eq("Content-Length" => "18", "Allow" => "POST")
+          expect(headers).to eq("content-length" => "18", "allow" => "POST")
           expect(body).to    eq(["Method Not Allowed"])
         end
       end
@@ -78,7 +78,7 @@ RSpec.describe Hanami::Router do
           status, headers, body = subject.call(env)
 
           expect(status).to  eq(405)
-          expect(headers).to eq("Content-Length" => "18", "Allow" => "PUT, PATCH")
+          expect(headers).to eq("content-length" => "18", "allow" => "PUT, PATCH")
           expect(body).to    eq(["Method Not Allowed"])
         end
       end

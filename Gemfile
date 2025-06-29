@@ -9,5 +9,5 @@ unless ENV["CI"]
   gem "yard-junk"
 end
 
-gem "hanami-devtools", github: "hanami/devtools", branch: "main"
+gem "hanami-devtools", path: "../hanami-devtools"
 gem "rexml"

@@ -67,7 +67,7 @@ RSpec.describe Hanami::Router do
           end
 
           context "format string" do
-            let(:response) { Rack::MockResponse.new(200, {"Content-Length" => "7"}, "Format!") }
+            let(:response) { Rack::MockResponse.new(200, {}, "Format!") }
 
             it "recognizes" do
               expect(app.request(verb.upcase, "/hanami/all.json", lint: true)).to eq_response(response)
@@ -75,7 +75,7 @@ RSpec.describe Hanami::Router do
           end
 
           context "block" do
-            let(:response) { Rack::MockResponse.new(200, {"Content-Length" => "6"}, "Block!") }
+            let(:response) { Rack::MockResponse.new(200, {}, "Block!") }
 
             it "recognizes" do
               expect(app.request(verb.upcase, "/block", lint: true)).to eq_response(response)
@@ -84,7 +84,7 @@ RSpec.describe Hanami::Router do
         end
 
         describe "constraints" do
-          let(:response) { Rack::MockResponse.new(200, {"Content-Length" => "24"}, "Moving with constraints!") }
+          let(:response) { Rack::MockResponse.new(200, {}, "Moving with constraints!") }
 
           it "recognize when called with matching constraints" do
             expect(app.request(verb.upcase, "/books/23", lint: true)).to eq_response(response)
@@ -94,7 +94,7 @@ RSpec.describe Hanami::Router do
 
         context "named routes" do
           context "symbol" do
-            let(:response) { Rack::MockResponse.new(200, {"Content-Length" => "12"}, "Named route!") }
+            let(:response) { Rack::MockResponse.new(200, {}, "Named route!") }
 
             it "recognizes by the given symbol" do
               expect(router.path(:"#{verb}_named_route")).to eq("/named_route")
@@ -127,7 +127,7 @@ RSpec.describe Hanami::Router do
 
         context "#HEAD" do
           let(:app) { Rack::MockRequest.new(Rack::Head.new(router)) }
-          let(:response) { Rack::MockResponse.new(405, {"Content-Length" => "18", "Allow" => verb.upcase}, []) }
+          let(:response) { Rack::MockResponse.new(405, {"Content-Length" => "18", "allow" => verb.upcase}, []) }
 
           context "path recognition" do
             context "fixed string" do
@@ -192,7 +192,7 @@ RSpec.describe Hanami::Router do
             actual = app.request("GET", "/", lint: true)
 
             expect(actual.status).to eq(response.status)
-            expect(actual.header).to eq(response.header)
+            expect(actual.headers).to eq(response.headers)
             expect(actual.body).to   eq(response.body)
           end
 
@@ -211,13 +211,13 @@ RSpec.describe Hanami::Router do
             end
           end
 
-          let(:response) { Rack::MockResponse.new(200, {"Content-Length" => "6"}, "Block!") }
+          let(:response) { Rack::MockResponse.new(200, {}, "Block!") }
 
           it "recognizes" do
             actual = app.request("GET", "/", lint: true)
 
             expect(actual.status).to eq(response.status)
-            expect(actual.header).to eq(response.header)
+            expect(actual.headers).to eq(response.headers)
             expect(actual.body).to   eq(response.body)
           end
         end

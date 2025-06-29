@@ -9,7 +9,7 @@ RSpec.describe Hanami::Router do
       status, headers, body = subject.call(env)
 
       expect(status).to  eq(404)
-      expect(headers).to eq("Content-Length" => "9")
+      expect(headers).to eq("content-length" => "9")
       expect(body).to    eq(["Not Found"])
     end
 

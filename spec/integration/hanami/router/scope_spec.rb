@@ -85,7 +85,7 @@ RSpec.describe Hanami::Router do
 
         app = Rack::MockRequest.new(router)
 
-        expect(app.request("GET", "users/settings/image", lint: true).headers["Location"]).to eq("/users/settings/avatar")
+        expect(app.request("GET", "users/settings/image", lint: true).headers["location"]).to eq("/users/settings/avatar")
       end
     end
 
